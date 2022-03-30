@@ -1,5 +1,6 @@
 package com.example.adp_39_eccomerce.Auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +52,13 @@ public class RegisterController extends AppCompatActivity{
                 } else {
                     Toast.makeText(RegisterController.this, "", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterController.this, LoginController.class));
             }
         });
     }
