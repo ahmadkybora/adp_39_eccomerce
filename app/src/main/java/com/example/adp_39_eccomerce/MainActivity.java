@@ -6,13 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.adp_39_eccomerce.Auth.LoginController;
 import com.example.adp_39_eccomerce.Auth.RegisterController;
+import com.example.adp_39_eccomerce.Models.Product;
+import com.example.adp_39_eccomerce.Routes.ProductRoutes;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private TextView textViewResult;
     private Button btn_login, btn_register;
+    private ProductRoutes productRoutes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,5 +52,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, RegisterController.class));
                 break;
         }
+    }
+
+    public void getProducts(){
+        Call<List<Product>> call = productRoutes.getProducts();
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if(!response.isSuccessful()) {
+                    textViewResult.setText("Code :" + response.code());
+                    return;
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+
+            }
+        });
     }
 }
