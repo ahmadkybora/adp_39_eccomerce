@@ -6,7 +6,15 @@ public class Product {
     private Integer price;
     private String description;
     private String Category;
-    private String Image;
+    private Integer Image;
+
+//    Product(int image, String textview1, String textview2, String textview3, String divider){
+//        this.imageview1 = imageview1;
+//        this.textview1 = textview1;
+//        this.textview2 = textview2;
+//        this.textview3 = textview3;
+//        this.divider = divider;
+//    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -28,7 +36,7 @@ public class Product {
         Category = category;
     }
 
-    public void setImage(String image) {
+    public void setImage(Integer image) {
         Image = image;
     }
 
@@ -52,7 +60,7 @@ public class Product {
         return Category;
     }
 
-    public String getImage() {
+    public Integer getImage() {
         return Image;
     }
 }
